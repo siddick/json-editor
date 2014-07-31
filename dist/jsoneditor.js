@@ -2494,6 +2494,11 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
         }
       }
     }
+
+    // additionalProperties
+    if (!Object.keys(schema).length && typeof this.schema.additionalProperties === 'object') {
+      $extend(schema, this.schema.additionalProperties);
+    }
     
     return schema;
   },
